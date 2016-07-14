@@ -581,6 +581,8 @@ void WebSocketsClient::connectedCb() {
 
 
 void WebSocketsClient::connectFailedCb() {
+    /* This allow you to detects when the server disconnects you*/
+    runCbEvent(WStype_DISCONNECTED, NULL, 0);
     DEBUG_WEBSOCKETS("[WS-Client] connection to %s:%u Faild\n", _host.c_str(), _port);
 }
 
